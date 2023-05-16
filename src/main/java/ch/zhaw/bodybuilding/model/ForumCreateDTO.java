@@ -4,6 +4,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class ForumCreateDTO {
- private User creator;
+ private String creator;
 
 } 
