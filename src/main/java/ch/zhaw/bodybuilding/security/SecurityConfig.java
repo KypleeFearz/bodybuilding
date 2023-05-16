@@ -35,9 +35,9 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
                 .requestMatchers("/*").permitAll()
-                .requestMatchers("/api/*").authenticated()
-                .requestMatchers("/all/*").permitAll()
-                .requestMatchers("/build/*").permitAll()
+                .requestMatchers("/api/**").authenticated()
+                .requestMatchers("/all/**").permitAll()
+                .requestMatchers("/build/**").permitAll()
                 .and().cors(withDefaults())
                 .oauth2ResourceServer(server -> server.jwt()
                     .decoder(jwtDecoder())

@@ -5521,15 +5521,15 @@ var app = (function () {
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[1] = list[i];
+    	child_ctx[2] = list[i];
     	return child_ctx;
     }
 
-    // (81:8) {#each forums as forum}
+    // (122:8) {#each forums as forum}
     function create_each_block$1(ctx) {
     	let tr;
     	let td;
-    	let t0_value = /*forum*/ ctx[1].creator + "";
+    	let t0_value = /*forum*/ ctx[2].creator + "";
     	let t0;
     	let t1;
 
@@ -5539,8 +5539,8 @@ var app = (function () {
     			td = element("td");
     			t0 = text(t0_value);
     			t1 = space();
-    			add_location(td, file$2, 82, 16, 2023);
-    			add_location(tr, file$2, 81, 12, 2001);
+    			add_location(td, file$2, 123, 16, 3213);
+    			add_location(tr, file$2, 122, 12, 3191);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -5549,7 +5549,7 @@ var app = (function () {
     			append_dev(tr, t1);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*forums*/ 1 && t0_value !== (t0_value = /*forum*/ ctx[1].creator + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*forums*/ 1 && t0_value !== (t0_value = /*forum*/ ctx[2].creator + "")) set_data_dev(t0, t0_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
@@ -5560,7 +5560,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(81:8) {#each forums as forum}",
+    		source: "(122:8) {#each forums as forum}",
     		ctx
     	});
 
@@ -5570,22 +5570,31 @@ var app = (function () {
     function create_fragment$2(ctx) {
     	let h10;
     	let t1;
-    	let form;
+    	let form0;
     	let div1;
     	let div0;
-    	let label;
+    	let label0;
     	let t3;
-    	let input;
+    	let input0;
     	let t4;
-    	let button;
+    	let button0;
     	let t6;
-    	let h11;
+    	let form1;
+    	let div3;
+    	let div2;
+    	let label1;
     	let t8;
+    	let input1;
+    	let t9;
+    	let button1;
+    	let t11;
+    	let h11;
+    	let t13;
     	let table;
     	let thead;
     	let tr;
     	let th;
-    	let t10;
+    	let t15;
     	let tbody;
     	let mounted;
     	let dispose;
@@ -5602,26 +5611,37 @@ var app = (function () {
     			h10 = element("h1");
     			h10.textContent = "Create Forum";
     			t1 = space();
-    			form = element("form");
+    			form0 = element("form");
     			div1 = element("div");
     			div0 = element("div");
-    			label = element("label");
-    			label.textContent = "Creator";
+    			label0 = element("label");
+    			label0.textContent = "Creator";
     			t3 = space();
-    			input = element("input");
+    			input0 = element("input");
     			t4 = space();
-    			button = element("button");
-    			button.textContent = "Submit";
+    			button0 = element("button");
+    			button0.textContent = "Submit";
     			t6 = space();
+    			form1 = element("form");
+    			div3 = element("div");
+    			div2 = element("div");
+    			label1 = element("label");
+    			label1.textContent = "Text";
+    			t8 = space();
+    			input1 = element("input");
+    			t9 = space();
+    			button1 = element("button");
+    			button1.textContent = "Submit";
+    			t11 = space();
     			h11 = element("h1");
     			h11.textContent = "All Forums";
-    			t8 = space();
+    			t13 = space();
     			table = element("table");
     			thead = element("thead");
     			tr = element("tr");
     			th = element("th");
     			th.textContent = "Creator";
-    			t10 = space();
+    			t15 = space();
     			tbody = element("tbody");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -5629,31 +5649,47 @@ var app = (function () {
     			}
 
     			attr_dev(h10, "class", "mt-3");
-    			add_location(h10, file$2, 56, 0, 1314);
-    			attr_dev(label, "class", "form-label");
-    			attr_dev(label, "for", "creator");
-    			add_location(label, file$2, 60, 12, 1438);
-    			attr_dev(input, "class", "form-control");
-    			attr_dev(input, "id", "creator");
-    			attr_dev(input, "type", "text");
-    			add_location(input, file$2, 61, 12, 1507);
+    			add_location(h10, file$2, 83, 0, 2060);
+    			attr_dev(label0, "class", "form-label");
+    			attr_dev(label0, "for", "creator");
+    			add_location(label0, file$2, 87, 12, 2184);
+    			attr_dev(input0, "class", "form-control");
+    			attr_dev(input0, "id", "creator");
+    			attr_dev(input0, "type", "text");
+    			add_location(input0, file$2, 88, 12, 2253);
     			attr_dev(div0, "class", "col");
-    			add_location(div0, file$2, 59, 8, 1407);
+    			add_location(div0, file$2, 86, 8, 2153);
     			attr_dev(div1, "class", "row mb-3");
-    			add_location(div1, file$2, 58, 4, 1375);
-    			attr_dev(button, "type", "button");
-    			attr_dev(button, "class", "btn btn-primary");
-    			add_location(button, file$2, 69, 4, 1704);
-    			attr_dev(form, "class", "mb-5");
-    			add_location(form, file$2, 57, 0, 1350);
-    			add_location(h11, file$2, 72, 0, 1801);
+    			add_location(div1, file$2, 85, 4, 2121);
+    			attr_dev(button0, "type", "button");
+    			attr_dev(button0, "class", "btn btn-primary");
+    			add_location(button0, file$2, 96, 4, 2450);
+    			attr_dev(form0, "class", "mb-5");
+    			add_location(form0, file$2, 84, 0, 2096);
+    			attr_dev(label1, "class", "form-label");
+    			attr_dev(label1, "for", "creator");
+    			add_location(label1, file$2, 101, 12, 2633);
+    			attr_dev(input1, "class", "form-control");
+    			attr_dev(input1, "id", "text");
+    			attr_dev(input1, "type", "text");
+    			add_location(input1, file$2, 102, 12, 2699);
+    			attr_dev(div2, "class", "col");
+    			add_location(div2, file$2, 100, 8, 2602);
+    			attr_dev(div3, "class", "row mb-3");
+    			add_location(div3, file$2, 99, 4, 2570);
+    			attr_dev(button1, "type", "button");
+    			attr_dev(button1, "class", "btn btn-primary");
+    			add_location(button1, file$2, 110, 4, 2892);
+    			attr_dev(form1, "class", "mb-5");
+    			add_location(form1, file$2, 98, 0, 2545);
+    			add_location(h11, file$2, 113, 0, 2991);
     			attr_dev(th, "scope", "col");
-    			add_location(th, file$2, 76, 12, 1884);
-    			add_location(tr, file$2, 75, 8, 1866);
-    			add_location(thead, file$2, 74, 4, 1849);
-    			add_location(tbody, file$2, 79, 4, 1947);
+    			add_location(th, file$2, 117, 12, 3074);
+    			add_location(tr, file$2, 116, 8, 3056);
+    			add_location(thead, file$2, 115, 4, 3039);
+    			add_location(tbody, file$2, 120, 4, 3137);
     			attr_dev(table, "class", "table");
-    			add_location(table, file$2, 73, 0, 1822);
+    			add_location(table, file$2, 114, 0, 3012);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5661,23 +5697,33 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, h10, anchor);
     			insert_dev(target, t1, anchor);
-    			insert_dev(target, form, anchor);
-    			append_dev(form, div1);
+    			insert_dev(target, form0, anchor);
+    			append_dev(form0, div1);
     			append_dev(div1, div0);
-    			append_dev(div0, label);
+    			append_dev(div0, label0);
     			append_dev(div0, t3);
-    			append_dev(div0, input);
-    			set_input_value(input, /*forum*/ ctx[1].creator);
-    			append_dev(form, t4);
-    			append_dev(form, button);
+    			append_dev(div0, input0);
+    			set_input_value(input0, /*forum*/ ctx[2].creator);
+    			append_dev(form0, t4);
+    			append_dev(form0, button0);
     			insert_dev(target, t6, anchor);
+    			insert_dev(target, form1, anchor);
+    			append_dev(form1, div3);
+    			append_dev(div3, div2);
+    			append_dev(div2, label1);
+    			append_dev(div2, t8);
+    			append_dev(div2, input1);
+    			set_input_value(input1, /*beitrag*/ ctx[1].text);
+    			append_dev(form1, t9);
+    			append_dev(form1, button1);
+    			insert_dev(target, t11, anchor);
     			insert_dev(target, h11, anchor);
-    			insert_dev(target, t8, anchor);
+    			insert_dev(target, t13, anchor);
     			insert_dev(target, table, anchor);
     			append_dev(table, thead);
     			append_dev(thead, tr);
     			append_dev(tr, th);
-    			append_dev(table, t10);
+    			append_dev(table, t15);
     			append_dev(table, tbody);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -5688,16 +5734,22 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler*/ ctx[3]),
-    					listen_dev(button, "click", /*createForum*/ ctx[2], false, false, false, false)
+    					listen_dev(input0, "input", /*input0_input_handler*/ ctx[5]),
+    					listen_dev(button0, "click", /*createForum*/ ctx[3], false, false, false, false),
+    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[6]),
+    					listen_dev(button1, "click", /*createBeitrag*/ ctx[4], false, false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*forum*/ 2 && input.value !== /*forum*/ ctx[1].creator) {
-    				set_input_value(input, /*forum*/ ctx[1].creator);
+    			if (dirty & /*forum*/ 4 && input0.value !== /*forum*/ ctx[2].creator) {
+    				set_input_value(input0, /*forum*/ ctx[2].creator);
+    			}
+
+    			if (dirty & /*beitrag*/ 2 && input1.value !== /*beitrag*/ ctx[1].text) {
+    				set_input_value(input1, /*beitrag*/ ctx[1].text);
     			}
 
     			if (dirty & /*forums*/ 1) {
@@ -5729,10 +5781,12 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h10);
     			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(form);
+    			if (detaching) detach_dev(form0);
     			if (detaching) detach_dev(t6);
+    			if (detaching) detach_dev(form1);
+    			if (detaching) detach_dev(t11);
     			if (detaching) detach_dev(h11);
-    			if (detaching) detach_dev(t8);
+    			if (detaching) detach_dev(t13);
     			if (detaching) detach_dev(table);
     			destroy_each(each_blocks, detaching);
     			mounted = false;
@@ -5753,13 +5807,22 @@ var app = (function () {
 
     function instance$2($$self, $$props, $$invalidate) {
     	let $jwt_token;
+    	let $user;
     	validate_store(jwt_token, 'jwt_token');
-    	component_subscribe($$self, jwt_token, $$value => $$invalidate(4, $jwt_token = $$value));
+    	component_subscribe($$self, jwt_token, $$value => $$invalidate(7, $jwt_token = $$value));
+    	validate_store(user, 'user');
+    	component_subscribe($$self, user, $$value => $$invalidate(8, $user = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Forum', slots, []);
     	const api_root = window.location.origin;
     	let forums = [];
     	let forum = { id: null, creator: null };
+
+    	let beitrag = {
+    		name: $user.nickname,
+    		text: null,
+    		creator: "Marko"
+    	};
 
     	function getForums() {
     		var config = {
@@ -5798,38 +5861,76 @@ var app = (function () {
     		});
     	}
 
+    	function createBeitrag() {
+    		var config = {
+    			method: "put",
+    			url: api_root + "/api/service/createBeitrag",
+    			headers: {
+    				"Content-Type": "application/json",
+    				Authorization: "Bearer " + $jwt_token
+    			},
+    			data: beitrag
+    		};
+
+    		axios$1(config).then(function (response) {
+    			alert("Forum created");
+    			getForums();
+    		}).catch(function (error) {
+    			alert("Could not create Forum");
+    			console.log(error);
+    		});
+    	}
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$1.warn(`<Forum> was created with unknown prop '${key}'`);
     	});
 
-    	function input_input_handler() {
+    	function input0_input_handler() {
     		forum.creator = this.value;
-    		$$invalidate(1, forum);
+    		$$invalidate(2, forum);
+    	}
+
+    	function input1_input_handler() {
+    		beitrag.text = this.value;
+    		$$invalidate(1, beitrag);
     	}
 
     	$$self.$capture_state = () => ({
     		axios: axios$1,
     		jwt_token,
+    		user,
     		api_root,
     		forums,
     		forum,
+    		beitrag,
     		getForums,
     		createForum,
-    		$jwt_token
+    		createBeitrag,
+    		$jwt_token,
+    		$user
     	});
 
     	$$self.$inject_state = $$props => {
     		if ('forums' in $$props) $$invalidate(0, forums = $$props.forums);
-    		if ('forum' in $$props) $$invalidate(1, forum = $$props.forum);
+    		if ('forum' in $$props) $$invalidate(2, forum = $$props.forum);
+    		if ('beitrag' in $$props) $$invalidate(1, beitrag = $$props.beitrag);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [forums, forum, createForum, input_input_handler];
+    	return [
+    		forums,
+    		beitrag,
+    		forum,
+    		createForum,
+    		createBeitrag,
+    		input0_input_handler,
+    		input1_input_handler
+    	];
     }
 
     class Forum extends SvelteComponentDev {
