@@ -1,5 +1,6 @@
 <script>
     import axios from "axios";
+    import { jwt_token} from "../store";
 
     const api_root = window.location.origin;
 
@@ -15,7 +16,8 @@
         var config = {
             method: "get",
             url: api_root + "/api/training",
-            headers: {},
+            headers: {Authorization: "Bearer "+$jwt_token},
+
         };
 
         axios(config)
