@@ -18,7 +18,7 @@ import ch.zhaw.bodybuilding.model.ForumCreateDTO;
 import ch.zhaw.bodybuilding.repository.ForumRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/all")
 public class ForumController {
 
     @Autowired
