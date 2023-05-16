@@ -23,8 +23,25 @@
 					<li class="nav-item">
 						<a
 							class="nav-link"
-							aria-current="page"
 							href="#/users">Users</a
+						>
+					</li>
+					<li class="nav-item">
+						<a
+							class="nav-link"
+							href="#/forum">Forum</a
+						>
+					</li>
+					<li class="nav-item">
+						<a
+							class="nav-link"
+							href="#/training">Training</a
+						>
+					</li>
+					<li class="nav-item">
+						<a
+							class="nav-link"
+							href="#/home">Home</a
 						>
 					</li>
 				</ul>

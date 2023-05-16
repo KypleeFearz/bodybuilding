@@ -16,7 +16,7 @@ public class Forum {
 private String id;
 
 @NonNull
-private User creator;
+private String creator;
 
 private Beitrag[]beitraege = new Beitrag[0];
 
