@@ -6,4 +6,5 @@ import ch.zhaw.bodybuilding.model.User;
 public interface UserRepository extends
                 MongoRepository<User, String> {
         User findFirstByEmail(String email);
+        User findFirstByName(String name);
 }

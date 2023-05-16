@@ -1,6 +1,6 @@
 <script>
     import axios from "axios";
-    import { jwt_token} from "../store";
+    import { jwt_token, user} from "../store";
 
     const api_root = window.location.origin;
 
@@ -9,6 +9,11 @@
         id: null,
         creator: null,
     };
+    let beitrag = {
+        name:$user.nickname,
+        text:null,
+        creator:"Marko",
+    }
 
     function getForums() {
         var config = {
@@ -51,6 +56,28 @@
                 console.log(error);
             });
     }
+    function createBeitrag() {
+        var config = {
+            method: "put",
+            url: api_root + "/api/service/createBeitrag",
+            headers: {
+                "Content-Type": "application/json",
+                 Authorization: "Bearer "+$jwt_token,
+
+            },
+            data: beitrag,
+        };
+
+        axios(config)
+            .then(function (response) {
+                alert("Forum created");
+                getForums();
+            })
+            .catch(function (error) {
+                alert("Could not create Forum");
+                console.log(error);
+            });
+    }
 </script>
 
 
@@ -68,6 +95,20 @@
         </div>
     </div>
     <button type="button" class="btn btn-primary" on:click={createForum}>Submit</button>
+</form>
+<form class="mb-5">
+    <div class="row mb-3">
+        <div class="col">
+            <label class="form-label" for="creator">Text</label>
+            <input
+                bind:value={beitrag.text}
+                class="form-control"
+                id="text"
+                type="text"
+            />
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" on:click={createBeitrag}>Submit</button>
 </form>
 
 <h1>All Forums</h1>
