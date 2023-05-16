@@ -6,5 +6,4 @@ import lombok.NoArgsConstructor;
 public class UserCreateDTO {
  private String email;
  private String name;
- private Integer age;
 } 

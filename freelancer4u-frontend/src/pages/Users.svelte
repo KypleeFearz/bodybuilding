@@ -1,21 +1,22 @@
 <script>
     import axios from "axios";
+    import { jwt_token, isAuthenticated, user} from "../store";
+
 
     const api_root = window.location.origin;
 
     let users = [];
-    let user = {
+    let benutzer = {
         id: null,
         email: null,
         name: null,
-        age: null,
     };
 
     function getUsers() {
         var config = {
             method: "get",
             url: api_root + "/api/user",
-            headers: {},
+            headers: {Authorization: "Bearer "+$jwt_token},
         };
 
         axios(config)
@@ -36,7 +37,7 @@
             headers: {
                 "Content-Type": "application/json",
             },
-            data: user,
+            data: benutzer,
         };
 
         axios(config)
@@ -53,12 +54,13 @@
 
 
 <h1 class="mt-3">Create User</h1>
+{#if $isAuthenticated && $user.user_roles && $user.user_roles.includes("admin") }
 <form class="mb-5">
     <div class="row mb-3">
         <div class="col">
             <label class="form-label" for="description">Name</label>
             <input
-                bind:value={user.name}
+                bind:value={benutzer.name}
                 class="form-control"
                 id="name"
                 type="text"
@@ -69,7 +71,7 @@
         <div class="col">
             <label class="form-label" for="email">E-Mail</label>
             <input
-                bind:value={user.email}
+                bind:value={benutzer.email}
                 class="form-control"
                 id="email"
                 type="email"
@@ -80,7 +82,7 @@
         <div class="col">
             <label class="form-label" for="age">Age</label>
             <input
-                bind:value={user.age}
+                bind:value={benutzer.age}
                 class="form-control"
                 id="age"
                 type="number"
@@ -89,6 +91,7 @@
     </div>
     <button type="button" class="btn btn-primary" on:click={createUser}>Submit</button>
 </form>
+{/if}
 
 <h1>All Users</h1>
 <table class="table">
@@ -96,7 +99,7 @@
         <tr>
             <th scope="col">Name</th>
             <th scope="col">E-Mail</th>
-            <th scope="col">Age</th>
+          <!--  <th scope="col">Age</th>-->
         </tr>
     </thead>
     <tbody>
@@ -104,7 +107,7 @@
             <tr>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.age}</td>
+             <!--    <td>{user.age}</td> -->
             </tr>
         {/each}
     </tbody>
