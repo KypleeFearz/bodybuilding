@@ -1,5 +1,6 @@
 <script>
     import axios from "axios";
+    import { jwt_token} from "../store";
 
     const api_root = window.location.origin;
 
@@ -12,8 +13,9 @@
     function getForums() {
         var config = {
             method: "get",
-            url: api_root + "/api/forum",
+            url: api_root + "/all/forum",
             headers: {},
+
         };
 
         axios(config)
@@ -30,9 +32,11 @@
     function createForum() {
         var config = {
             method: "post",
-            url: api_root + "/api/forum",
+            url: api_root + "/all/forum",
             headers: {
                 "Content-Type": "application/json",
+                 Authorization: "Bearer "+$jwt_token,
+
             },
             data: forum,
         };
