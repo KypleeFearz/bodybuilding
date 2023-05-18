@@ -22,5 +22,5 @@ public class Training {
     private String wiederholung;
     
     private Integer pause;
-
+    
 }

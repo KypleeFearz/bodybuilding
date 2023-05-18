@@ -1,6 +1,6 @@
 <script>
     import axios from "axios";
-    import { jwt_token} from "../store";
+    import { isAuthenticated, jwt_token, user} from "../store";
 
     const api_root = window.location.origin;
 
@@ -9,6 +9,10 @@
         id: null,
         creator: null,
     };
+    let beitrag = {
+        text:null,
+        creator:"Marko",
+    }
 
     function getForums() {
         var config = {
@@ -51,9 +55,31 @@
                 console.log(error);
             });
     }
+    function createBeitrag() {
+        var config = {
+            method: "put",
+            url: api_root + "/api/service/createBeitrag",
+            headers: {
+                "Content-Type": "application/json",
+                 Authorization: "Bearer "+$jwt_token,
+
+            },
+            data: beitrag,
+        };
+
+        axios(config)
+            .then(function (response) {
+                alert("Forum created");
+                getForums();
+            })
+            .catch(function (error) {
+                alert("Could not create Forum");
+                console.log(error);
+            });
+    }
 </script>
 
-
+{#if $isAuthenticated}
 <h1 class="mt-3">Create Forum</h1>
 <form class="mb-5">
     <div class="row mb-3">
@@ -69,6 +95,7 @@
     </div>
     <button type="button" class="btn btn-primary" on:click={createForum}>Submit</button>
 </form>
+{/if}
 
 <h1>All Forums</h1>
 <table class="table">
@@ -80,7 +107,7 @@
     <tbody>
         {#each forums as forum}
             <tr>
-                <td>{forum.creator}</td>
+                <td><a href={"#/forum/"+forum.id}>{forum.creator}</a></td>
             </tr>
         {/each}
     </tbody>

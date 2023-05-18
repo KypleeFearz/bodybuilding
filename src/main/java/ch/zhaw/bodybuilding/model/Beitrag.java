@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class Beitrag {
 
-    private User user;
+    private String user;
 
     private String text;
  

@@ -5,4 +5,5 @@ import ch.zhaw.bodybuilding.model.Forum;
 
 public interface ForumRepository extends
                 MongoRepository<Forum, String> {
+                    Forum findFirstByCreator(String creator);
 }
