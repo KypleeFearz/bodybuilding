@@ -1,6 +1,6 @@
 <script>
     import axios from "axios";
-    import { jwt_token, user} from "../store";
+    import { isAuthenticated, jwt_token, user} from "../store";
 
     const api_root = window.location.origin;
 
@@ -10,7 +10,6 @@
         creator: null,
     };
     let beitrag = {
-        name:$user.nickname,
         text:null,
         creator:"Marko",
     }
@@ -80,7 +79,7 @@
     }
 </script>
 
-
+{#if $isAuthenticated}
 <h1 class="mt-3">Create Forum</h1>
 <form class="mb-5">
     <div class="row mb-3">
@@ -96,20 +95,7 @@
     </div>
     <button type="button" class="btn btn-primary" on:click={createForum}>Submit</button>
 </form>
-<form class="mb-5">
-    <div class="row mb-3">
-        <div class="col">
-            <label class="form-label" for="creator">Text</label>
-            <input
-                bind:value={beitrag.text}
-                class="form-control"
-                id="text"
-                type="text"
-            />
-        </div>
-    </div>
-    <button type="button" class="btn btn-primary" on:click={createBeitrag}>Submit</button>
-</form>
+{/if}
 
 <h1>All Forums</h1>
 <table class="table">
@@ -121,7 +107,7 @@
     <tbody>
         {#each forums as forum}
             <tr>
-                <td>{forum.creator}</td>
+                <td><a href={"#/forum/"+forum.id}>{forum.creator}</a></td>
             </tr>
         {/each}
     </tbody>
