@@ -20,6 +20,7 @@ private String id;
 @NonNull
 private String creator;
 
-private Beitrag[]beitraege;
+private Beitrag[]beitraege=new Beitrag[0];
+
 
 }
