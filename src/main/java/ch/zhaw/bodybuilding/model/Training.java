@@ -20,7 +20,7 @@ public class Training {
     private String satz;
     @NonNull
     private String wiederholung;
-    
-    private Integer pause;
+    @NonNull
+    private String fokus;
     
 }
