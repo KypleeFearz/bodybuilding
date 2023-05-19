@@ -8,7 +8,7 @@
 <div id="app">
 	<nav class="navbar navbar-expand-lg bg-light">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#/">Freelancer4U</a>
+			<a class="navbar-brand" href="#/">Bodybuilding</a>
 			<button
 				class="navbar-toggler"
 				type="button"
@@ -44,12 +44,6 @@
 						>
 					</li>
 					{/if}
-					<li class="nav-item">
-						<a
-							class="nav-link"
-							href="#/home">Home</a
-						>
-					</li>
 				</ul>
 				<div class="d-flex">
 					{#if $isAuthenticated}
