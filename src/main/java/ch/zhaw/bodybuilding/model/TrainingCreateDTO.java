@@ -7,4 +7,5 @@ public class TrainingCreateDTO {
  private String ubung;
  private String satz;
  private String wiederholung;
+ private String fokus;
 } 

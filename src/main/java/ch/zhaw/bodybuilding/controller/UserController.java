@@ -54,4 +54,15 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/user/name/{name}")
+
+    public ResponseEntity<User> getUserByName(@PathVariable String name) {
+        User optUser = userRepository.findFirstByName(name);
+        if (optUser!=null) {
+            return new ResponseEntity<>(optUser, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

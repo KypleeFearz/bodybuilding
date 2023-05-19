@@ -4,12 +4,14 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Getter
+@Setter
 @Document("user")
 public class User {
     @Id
@@ -21,4 +23,5 @@ public class User {
 
     private String gender;
     private Integer age;
+    private Training[] plaene= new Training[0];
 }
