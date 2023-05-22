@@ -1,6 +1,6 @@
 <script>
     import axios from "axios";
-    import { jwt_token, user } from "../store";
+    import { isAuthenticated, jwt_token, user } from "../store";
     export let params = {};
 
     const api_root = window.location.origin;
@@ -134,7 +134,7 @@
             });
     }
 </script>
-
+{#if $isAuthenticated}
 <h1 class="mt-3">Create Beitrag</h1>
 <form class="mb-5">
     <div class="row mb-3">
@@ -167,6 +167,7 @@
     </div>
  
 </form>
+{/if}
 {#if forum.beitraege.length != 0}
     <h1>Forum</h1>
     <table class="table">
@@ -183,7 +184,7 @@
                     <td>{beitrag.user}</td>
                     <td>{beitrag.text}</td>
                     <td
-                        >{#if $user.nickname === beitrag.user}
+                        >{#if $isAuthenticated && $user.nickname === beitrag.user}
                             <button
                                 type="button"
                                 class="btn btn-primary btn-sm"
@@ -194,7 +195,7 @@
                                 delete
                             </button>
                         {/if}
-                        {#if $user.user_roles.includes("admin") && $user.nickname!== beitrag.user}
+                        {#if $isAuthenticated && $user.user_roles.includes("admin") && $user.nickname!== beitrag.user}
                             <button
                                 type="button"
                                 class="btn btn-primary btn-sm"
@@ -205,7 +206,7 @@
                                 delete
                             </button>
                         {/if}
-                        {#if $user.nickname === beitrag.user}
+                        {#if $isAuthenticated && $user.nickname === beitrag.user}
                         <button
                             type="button"
                             class="btn btn-primary btn-sm"
