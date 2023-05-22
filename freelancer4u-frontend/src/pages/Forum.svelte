@@ -1,6 +1,6 @@
 <script>
     import axios from "axios";
-    import { isAuthenticated, jwt_token, user} from "../store";
+    import { isAuthenticated, jwt_token} from "../store";
 
     const api_root = window.location.origin;
 
@@ -9,11 +9,7 @@
         id: null,
         creator: null,
     };
-    let beitrag = {
-        text:null,
-        creator:"Marko",
-    }
-
+    
     function getForums() {
         var config = {
             method: "get",
@@ -36,35 +32,13 @@
     function createForum() {
         var config = {
             method: "post",
-            url: api_root + "/all/forum",
+            url: api_root + "/api/forum",
             headers: {
                 "Content-Type": "application/json",
                  Authorization: "Bearer "+$jwt_token,
 
             },
             data: forum,
-        };
-
-        axios(config)
-            .then(function (response) {
-                alert("Forum created");
-                getForums();
-            })
-            .catch(function (error) {
-                alert("Could not create Forum");
-                console.log(error);
-            });
-    }
-    function createBeitrag() {
-        var config = {
-            method: "put",
-            url: api_root + "/api/service/createBeitrag",
-            headers: {
-                "Content-Type": "application/json",
-                 Authorization: "Bearer "+$jwt_token,
-
-            },
-            data: beitrag,
         };
 
         axios(config)

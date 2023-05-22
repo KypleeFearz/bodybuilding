@@ -108,11 +108,11 @@
 
         axios(config)
             .then(function (response) {
-                alert("Training created");
+                alert("Training gekauft");
                 getTrainings();
             })
             .catch(function (error) {
-                alert("Could not create Training");
+                alert("Konnte Training nicht kaufen");
                 console.log(error);
             });
     }

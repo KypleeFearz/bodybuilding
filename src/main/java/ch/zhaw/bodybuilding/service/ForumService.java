@@ -61,11 +61,15 @@ public class ForumService {
         return Optional.empty();
     }
 
-    public Optional<Forum> deleteBeitrag(String text, String beitragCreator, String creator, List<String> userRole) {
+    public Optional<Forum> deleteBeitrag(String text, String beitragCreator, String creator, List<String> userRole,
+            String user) {
         Forum forum = forumRepository.findFirstByCreator(creator);
-        if (forum != null && text != "" && beitragCreator != null) {
-                Beitrag[] beitraege = forum.getBeitraege();
-                Beitrag[] newBeitraege = new Beitrag[beitraege.length - 1];
+        if ((forum != null && text != "" && beitragCreator != null)
+                && (user.equals(beitragCreator) || (userRole != null && userRole.contains("admin")))) {
+            Beitrag[] beitraege = forum.getBeitraege();
+            Beitrag[] newBeitraege = new Beitrag[beitraege.length - 1];
+            if (newBeitraege.length != 0) {
+
                 int k = 0;
                 for (int i = 0; i < beitraege.length; i++) {
                     if (beitraege[i].getUser().equals(beitragCreator) && beitraege[i].getText().equals(text)) {
@@ -76,10 +80,11 @@ public class ForumService {
                         newBeitraege[i] = beitraege[i];
                     }
                 }
-                forum.setBeitraege(newBeitraege);
-                forumRepository.save(forum);
-                return Optional.of(forum);
             }
+            forum.setBeitraege(newBeitraege);
+            forumRepository.save(forum);
+            return Optional.of(forum);
+        }
         return Optional.empty();
     }
 }
