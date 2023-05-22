@@ -21,7 +21,5 @@ public class User {
     @NonNull
     private String name;
 
-    private String gender;
-    private Integer age;
     private Training[] plaene= new Training[0];
 }

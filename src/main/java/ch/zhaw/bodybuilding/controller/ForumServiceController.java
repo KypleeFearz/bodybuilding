@@ -28,7 +28,7 @@ public class ForumServiceController {
 
     @PutMapping("/createBeitrag")
 
-    public ResponseEntity<Forum> createForum(
+    public ResponseEntity<Forum> createBeitrag(
             @RequestBody ForumChangeDTO fDTO, @AuthenticationPrincipal Jwt jwt) {
         String name=jwt.getClaimAsString("nickname");
         String text=fDTO.getText();
@@ -41,7 +41,7 @@ public class ForumServiceController {
     }
     @PutMapping("/editBeitrag")
 
-    public ResponseEntity<Forum> editForum(
+    public ResponseEntity<Forum> editBeitrag(
             @RequestBody ForumChangeDTO fDTO, @RequestParam String newText, @AuthenticationPrincipal Jwt jwt) {
         String name=jwt.getClaimAsString("nickname");
         String text=fDTO.getText();
@@ -54,16 +54,17 @@ public class ForumServiceController {
     }
     @PutMapping("/deleteBeitrag")
 
-    public ResponseEntity<Forum> deleteForum(
+    public ResponseEntity<Forum> deleteBeitrag(
             @RequestBody ForumChangeDTO fDTO, @AuthenticationPrincipal Jwt jwt) {
         String text=fDTO.getText();
         String creator=fDTO.getCreator();
         String beitragCreator=fDTO.getBeitragCreator();
-        List<String> userRole = null;
+        String user = jwt.getClaimAsString("nickname");
+        List<String> userRole= null;
         if (jwt.hasClaim("user_roles")) {
             userRole = jwt.getClaimAsStringList("user_roles");
         }
-        Optional<Forum>forum=forumService.deleteBeitrag(text, beitragCreator, creator, userRole);
+        Optional<Forum>forum=forumService.deleteBeitrag(text, beitragCreator, creator, userRole, user);
         if (forum.isPresent()){
         return new ResponseEntity<>(forum.get(),HttpStatus.OK);
         }
