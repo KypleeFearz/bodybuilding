@@ -12,7 +12,7 @@ import ch.zhaw.bodybuilding.model.Mail;
 @Service
 public class MailService {
     private static final Logger logger = LoggerFactory.getLogger(MailService.class);
-    private final static String FROM_MAIL = "se2.zhaw@outlook.com";
+    private final static String FROM_MAIL = "nikolabbprojekt@hotmail.com";
 
     /**
      * Setups the mail configuraiton.
@@ -25,7 +25,7 @@ public class MailService {
         mailSender.setPort(587);
 
         mailSender.setUsername(FROM_MAIL);
-        mailSender.setPassword("KNR7ZHsFThk5eav");
+        mailSender.setPassword("BBprojekt");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
