@@ -3,7 +3,7 @@ package ch.zhaw.bodybuilding.service;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,7 +23,7 @@ public class MailServiceTest {
         MockitoAnnotations.openMocks(this);
     }
     @Test
-    @Disabled
+
     public void testSendMail() {
         Mail mail = new Mail();
         mail.setMessage("Test");
