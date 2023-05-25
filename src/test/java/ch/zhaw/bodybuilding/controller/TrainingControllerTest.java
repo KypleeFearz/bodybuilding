@@ -51,7 +51,7 @@ public class TrainingControllerTest {
     @Test
     @Order(1)
     @WithMockUser
-    public void testCreateUser() throws Exception {
+    public void testCreateTraining() throws Exception {
         // create a test training and convert to Json
         Training training = new Training(TEST_UBUNG, TEST_SATZ, TEST_WIEDERHOLUNG, TEST_FOKUS);
         var jsonBody = ow.writeValueAsString(training);
@@ -115,7 +115,7 @@ public class TrainingControllerTest {
     @Test
     @Order(3)
     @WithMockUser
-    public void testDeleteUser() throws Exception {
+    public void testDeleteTraining() throws Exception {
         // DELETE training 
         var result = mvc.perform(delete("/api/training/delete")
         .param("uebung", TEST_UBUNG)
