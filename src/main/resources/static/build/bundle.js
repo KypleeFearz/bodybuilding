@@ -1757,24 +1757,34 @@ var app = (function () {
 
     function create_fragment$5(ctx) {
     	let h1;
+    	let t1;
+    	let h2;
 
     	const block = {
     		c: function create() {
     			h1 = element("h1");
-    			h1.textContent = "Bodybuilding";
+    			h1.textContent = "Willkomen beim Bodybuilding Beast";
+    			t1 = space();
+    			h2 = element("h2");
+    			h2.textContent = "Jetzt ist der beste Moment sich zu ändern!";
     			add_location(h1, file$5, 0, 0, 0);
+    			add_location(h2, file$5, 1, 0, 44);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, h2, anchor);
     		},
     		p: noop$1,
     		i: noop$1,
     		o: noop$1,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h1);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(h2);
     		}
     	};
 
