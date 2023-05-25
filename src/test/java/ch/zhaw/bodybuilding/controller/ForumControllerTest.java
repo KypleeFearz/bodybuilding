@@ -41,7 +41,7 @@ public class ForumControllerTest {
     @Autowired
     ForumRepository forumRepository;
 
-    private static final String TEST_CREATOR = "Nikola";
+    private static final String TEST_CREATOR = "Dragan";
 
     private static ObjectMapper mapper = new ObjectMapper();
     private static ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
@@ -49,7 +49,7 @@ public class ForumControllerTest {
     @Test
     @Order(1)
     @WithMockUser
-    public void testCreateUser() throws Exception {
+    public void testCreateForum() throws Exception {
         // create a test Forum and convert to Json
         Forum forum = new Forum(TEST_CREATOR);
         var jsonBody = ow.writeValueAsString(forum);
@@ -67,7 +67,7 @@ public class ForumControllerTest {
     @Test
     @Order(2)
     @WithMockUser
-    public void testGetTraining() throws Exception {
+    public void testGetForum() throws Exception {
        
         // GET Forum by creator 
         var result = mvc.perform(get("/all/forum/creator/"+TEST_CREATOR)
@@ -103,7 +103,7 @@ public class ForumControllerTest {
     @Test
     @Order(3)
     @WithMockUser
-    public void testDeleteUser() throws Exception {
+    public void testDeleteForum() throws Exception {
         // DELETE Forum
         var result = mvc.perform(delete("/api/forum/delete")
         .param("creator", TEST_CREATOR)
