@@ -88,7 +88,7 @@ public class UserServiceControllerTest {
     public void testBuyTraining() throws Exception {
         Training training = trainingRepository.findByUbung("Chestpress");
 
-        // create a test user and convert to Json
+        // create a test User to buy a training and convert to Json
         UserChangeDTO userChangeDTO = new UserChangeDTO();
         userChangeDTO.setTrainingId(training.getId());
         userChangeDTO.setUserName(TEST_STRING);
@@ -108,7 +108,7 @@ public class UserServiceControllerTest {
     @Order(3)
     @WithMockUser
     public void testDeleteUserTraining() throws Exception {
-        // DELETE user by email 
+        // DELETE user and training
         var result = mvc.perform(delete("/api/training/delete")
         .param("uebung", "Chestpress")
         .contentType(MediaType.TEXT_PLAIN)
@@ -121,7 +121,7 @@ public class UserServiceControllerTest {
         var json = result.getResponse().getContentAsString();
         assertTrue(json.contains("DELETED"));
 
-        // User should not exist
+        // Training should not exist
         Training training = trainingRepository.findByUbung("Chestpress");
         assertNull(training);
 

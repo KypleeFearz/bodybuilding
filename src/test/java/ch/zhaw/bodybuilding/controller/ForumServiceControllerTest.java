@@ -2,7 +2,6 @@ package ch.zhaw.bodybuilding.controller;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -68,7 +67,7 @@ public class ForumServiceControllerTest {
                 .andExpect(status().isCreated())
                 .andReturn();
 
-        // create a test user and convert to Json
+        // create a test Forum and convert to Json
         ForumChangeDTO forumChangeDTO = new ForumChangeDTO();
         forumChangeDTO.setCreator(TEST_CREATOR);
         forumChangeDTO.setText(TEST_TEXT);
@@ -95,7 +94,7 @@ public class ForumServiceControllerTest {
         forumChangeDTO.setBeitragCreator(null);
         var jsonBody = ow.writeValueAsString(forumChangeDTO);
 
-        // GET user by email
+        // GET Forum object
         var result = mvc.perform(put("/api/service/editBeitrag")
                 .param("newText", "CSGO")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -126,7 +125,7 @@ public class ForumServiceControllerTest {
         forumChangeDTO.setBeitragCreator(TEST_CREATOR);
         var jsonBody = ow.writeValueAsString(forumChangeDTO);
 
-        // DELETE user by email
+        // DELETE Forum object
        mvc.perform(put("/api/service/deleteBeitrag")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonBody)
@@ -135,7 +134,7 @@ public class ForumServiceControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        // User should not exist
+        // Object should not exist
         Forum forum = forumRepository.findFirstByCreator(TEST_CREATOR);
         if(forum != null){
             assertTrue(forum.getBeitraege().length == 0);

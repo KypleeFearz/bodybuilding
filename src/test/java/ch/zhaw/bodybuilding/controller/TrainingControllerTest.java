@@ -52,7 +52,7 @@ public class TrainingControllerTest {
     @Order(1)
     @WithMockUser
     public void testCreateUser() throws Exception {
-        // create a test user and convert to Json
+        // create a test training and convert to Json
         Training training = new Training(TEST_UBUNG, TEST_SATZ, TEST_WIEDERHOLUNG, TEST_FOKUS);
         var jsonBody = ow.writeValueAsString(training);
 
@@ -71,7 +71,7 @@ public class TrainingControllerTest {
     @WithMockUser
     public void testGetTraining() throws Exception {
        
-        // GET user by email 
+        // GET training by uebung 
         var result = mvc.perform(get("/api/training/uebung/"+TEST_UBUNG)
         .contentType(MediaType.TEXT_PLAIN))
         .andDo(print())
@@ -82,20 +82,20 @@ public class TrainingControllerTest {
         Training training = trainingRepository.findByUbung(TEST_UBUNG);
         String trainingId = training.getId();       
 
-        // GET user by id
+        // GET training by id
         mvc.perform(get("/api/training/"+trainingId))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
 
-        // GET all users function test
+        // GET all traingings function test
         mvc.perform(get("/api/training")
         .contentType(MediaType.TEXT_PLAIN))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
 
-        // GET all users function test
+        // GET all Trainings fokus test
         mvc.perform(get("/api/training/fokus")
         .param("fokus", TEST_FOKUS)
         .contentType(MediaType.TEXT_PLAIN)
@@ -116,7 +116,7 @@ public class TrainingControllerTest {
     @Order(3)
     @WithMockUser
     public void testDeleteUser() throws Exception {
-        // DELETE user by email 
+        // DELETE training 
         var result = mvc.perform(delete("/api/training/delete")
         .param("uebung", TEST_UBUNG)
         .contentType(MediaType.TEXT_PLAIN)
@@ -129,7 +129,7 @@ public class TrainingControllerTest {
         var json = result.getResponse().getContentAsString();
         assertTrue(json.contains("DELETED"));
 
-        // User should not exist
+        // Training should not exist
         Training training = trainingRepository.findByUbung(TEST_UBUNG);
         assertNull(training);
     }    
