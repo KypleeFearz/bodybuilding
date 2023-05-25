@@ -69,7 +69,7 @@ public class ForumControllerTest {
     @WithMockUser
     public void testGetForum() throws Exception {
        
-        // GET Forum by creator 
+        //GET Forum by creator 
         var result = mvc.perform(get("/all/forum/creator/"+TEST_CREATOR)
         .param("creator", TEST_CREATOR)
         .contentType(MediaType.TEXT_PLAIN))
