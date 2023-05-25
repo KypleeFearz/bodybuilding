@@ -68,7 +68,7 @@ public class UserServiceControllerTest {
                 .andDo(print())
                 .andExpect(status().isCreated())
                 .andReturn();
-        // create a test user and convert to Json
+        // create a test user and training and convert to Json
         User user = new User(TEST_EMAIL, TEST_STRING);
         var jsonBody2 = ow.writeValueAsString(user);
 
@@ -88,7 +88,7 @@ public class UserServiceControllerTest {
     public void testBuyTraining() throws Exception {
         Training training = trainingRepository.findByUbung("Chestpress");
 
-        // create a test User to buy a training and convert to Json
+        // UserChange object with Trainings Id convert to Json
         UserChangeDTO userChangeDTO = new UserChangeDTO();
         userChangeDTO.setTrainingId(training.getId());
         userChangeDTO.setUserName(TEST_STRING);
