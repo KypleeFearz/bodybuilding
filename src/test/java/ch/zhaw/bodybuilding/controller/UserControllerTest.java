@@ -68,7 +68,7 @@ public class UserControllerTest {
     @Order(2)
     @WithMockUser
     public void testGetUser() throws Exception {
-        // GET user by email 
+        // GET user by name 
         var result = mvc.perform(get("/api/user/name/"+TEST_STRING)
         .contentType(MediaType.TEXT_PLAIN))
         .andDo(print())
@@ -93,7 +93,7 @@ public class UserControllerTest {
         .andExpect(status().isOk())
         .andReturn();
 
-        // GET all users function test
+        // GET all users name test
         mvc.perform(get("/api/user/name/"+TEST_STRING)
         .contentType(MediaType.TEXT_PLAIN))
         .andDo(print())
@@ -110,7 +110,7 @@ public class UserControllerTest {
     @Order(3)
     @WithMockUser
     public void testDeleteUser() throws Exception {
-        // DELETE user by email 
+        // DELETE user by username 
         var result = mvc.perform(delete("/api/user/delete")
         .param("userName", TEST_STRING)
         .contentType(MediaType.TEXT_PLAIN)

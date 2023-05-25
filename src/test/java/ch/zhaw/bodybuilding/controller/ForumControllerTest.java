@@ -50,7 +50,7 @@ public class ForumControllerTest {
     @Order(1)
     @WithMockUser
     public void testCreateUser() throws Exception {
-        // create a test user and convert to Json
+        // create a test Forum and convert to Json
         Forum forum = new Forum(TEST_CREATOR);
         var jsonBody = ow.writeValueAsString(forum);
 
@@ -69,7 +69,7 @@ public class ForumControllerTest {
     @WithMockUser
     public void testGetTraining() throws Exception {
        
-        // GET user by email 
+        // GET Forum by creator 
         var result = mvc.perform(get("/all/forum/creator/"+TEST_CREATOR)
         .param("creator", TEST_CREATOR)
         .contentType(MediaType.TEXT_PLAIN))
@@ -81,13 +81,13 @@ public class ForumControllerTest {
         Forum forum = forumRepository.findFirstByCreator(TEST_CREATOR);
         String forumId = forum.getId();       
 
-        // GET user by id
+        // GET Forum by id
         mvc.perform(get("/all/forum/"+forumId))
         .andDo(print())
         .andExpect(status().isOk())
         .andReturn();
 
-        // GET all users function test
+        // GET all Forum function test
         mvc.perform(get("/all/forum")
         .contentType(MediaType.TEXT_PLAIN))
         .andDo(print())
@@ -104,7 +104,7 @@ public class ForumControllerTest {
     @Order(3)
     @WithMockUser
     public void testDeleteUser() throws Exception {
-        // DELETE user by email 
+        // DELETE Forum
         var result = mvc.perform(delete("/api/forum/delete")
         .param("creator", TEST_CREATOR)
         .contentType(MediaType.TEXT_PLAIN)
@@ -117,7 +117,7 @@ public class ForumControllerTest {
         var json = result.getResponse().getContentAsString();
         assertTrue(json.contains("DELETED"));
 
-        // User should not exist
+        // Forum should not exist
         Forum forum = forumRepository.findFirstByCreator(TEST_CREATOR);
         assertNull(forum);
     }    
