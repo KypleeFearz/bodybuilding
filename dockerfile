@@ -15,5 +15,5 @@ RUN rm -r freelancer4u-frontend
 RUN sed -i 's/\r$//' mvnw
 RUN chmod +x mvnw
 RUN ./mvnw package
-EXPOSE 8081
+EXPOSE 8080
 CMD ["java", "-jar", "/usr/src/app/target/bodybuilding-0.0.1-SNAPSHOT.jar"]
