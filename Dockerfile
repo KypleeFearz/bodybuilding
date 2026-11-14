@@ -9,7 +9,7 @@ COPY frontend/ ./
 RUN npm run build
 
 # ---- 2. Build the Spring Boot jar with the frontend bundled as static resources ----
-FROM eclipse-temurin:21-jdk AS backend
+FROM eclipse-temurin:24-jdk AS backend
 WORKDIR /app/backend
 COPY backend/.mvn .mvn
 COPY backend/mvnw backend/pom.xml ./
@@ -19,7 +19,7 @@ COPY --from=frontend /app/frontend/dist src/main/resources/static
 RUN ./mvnw -B -q package -DskipTests
 
 # ---- 3. Slim runtime image ----
-FROM eclipse-temurin:21-jre
+FROM eclipse-temurin:24-jre
 WORKDIR /app
 RUN useradd --system --no-create-home app
 COPY --from=backend /app/backend/target/bodybuilding.jar app.jar
